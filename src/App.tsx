@@ -3,6 +3,7 @@ import { Header } from "./components/Header";
 
 import styles from "./App.module.css";
 
+import { TaskList } from "./components/TaskList";
 import "./global.css";
 
 export function App() {
@@ -11,6 +12,7 @@ export function App() {
 			<Header />
 			<div className={styles.wrapper}>
 				<CreateTask />
+				<TaskList />
 			</div>
 		</>
 	);
