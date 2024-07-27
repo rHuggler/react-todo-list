@@ -2,7 +2,7 @@ import { ClipboardText } from "@phosphor-icons/react";
 import { Task } from "./Task";
 import styles from "./TaskList.module.css";
 
-const tasks: number[] = [];
+const tasks: number[] = [1];
 
 export function TaskList() {
 	function renderTasksOrEmpty() {

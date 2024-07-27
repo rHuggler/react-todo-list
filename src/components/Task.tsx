@@ -7,7 +7,7 @@ export function Task() {
 			<div className={styles.checkboxContainer}>
 				<input type="checkbox" name="status" id="taskId" />
 			</div>
-			<p>
+			<p className={styles.doneItem}>
 				Integer urna interdum massa libero auctor neque turpis turpis semper.
 				Duis vel sed fames integer.
 			</p>

@@ -40,6 +40,15 @@
     background-color: var(--gray-400);
 }
 
+.checkboxContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .checkboxContainer input {
     appearance: none;
 
@@ -47,8 +56,8 @@
     justify-content: center;
     align-items: center;
 
-    height: 1.25rem;
-    width: 1.25rem;
+    height: 1rem;
+    width: 1rem;
     border-radius: 50%;
 
     background-color: transparent;
@@ -84,4 +93,9 @@
 
 .checkboxContainer input:checked::after {
     display: flex;
+}
+
+.doneItem {
+    color: var(--gray-300);
+    text-decoration: line-through;
 }
