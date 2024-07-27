@@ -2,12 +2,18 @@ import { ClipboardText } from "@phosphor-icons/react";
 import { Task } from "./Task";
 import styles from "./TaskList.module.css";
 
-const tasks: number[] = [1];
+const tasks: number[] = [1, 2, 3];
 
 export function TaskList() {
 	function renderTasksOrEmpty() {
 		if (tasks.length) {
-			return tasks.map((t) => <Task key={t} />);
+			return tasks.map((t) => (
+				<Task
+					key={t}
+					description="Integer urna interdum massa libero auctor neque turpis turpis semper.
+				Duis vel sed fames integer."
+				/>
+			));
 		}
 
 		return (

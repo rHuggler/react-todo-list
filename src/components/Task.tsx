@@ -3,7 +3,7 @@ import type React from "react";
 import { useState } from "react";
 import styles from "./Task.module.css";
 
-export function Task() {
+export function Task({ description }: { description: string }) {
 	const [taskStatus, setTaskStatus] = useState(false);
 
 	function handleTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
@@ -20,10 +20,7 @@ export function Task() {
 					onChange={handleTaskStatus}
 				/>
 			</div>
-			<p className={taskStatus ? styles.doneItem : ""}>
-				Integer urna interdum massa libero auctor neque turpis turpis semper.
-				Duis vel sed fames integer.
-			</p>
+			<p className={taskStatus ? styles.doneItem : ""}>{description}</p>
 			{/* biome-ignore lint/a11y/noNoninteractiveTabindex: <Container for an icon> */}
 			<div className={styles.trashIcon} tabIndex={0}>
 				<Trash size={16} weight="bold" />
