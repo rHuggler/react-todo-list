@@ -39,6 +39,10 @@
     color: var(--gray-200);
 }
 
+.taskList p {
+    flex: 1;
+}
+
 .emptyTaskList {
     display: flex;
     flex-direction: column;
