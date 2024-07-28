@@ -3,8 +3,14 @@ import type React from "react";
 import { useState } from "react";
 import styles from "./Task.module.css";
 
-export function Task({ description }: { description: string }) {
-	const [taskStatus, setTaskStatus] = useState(false);
+export interface TaskProps {
+	id?: number;
+	done: boolean;
+	description: string;
+}
+
+export function Task({ done, description }: TaskProps) {
+	const [taskStatus, setTaskStatus] = useState(done);
 
 	function handleTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
 		setTaskStatus(e.target.checked);
@@ -18,6 +24,7 @@ export function Task({ description }: { description: string }) {
 					name="status"
 					id="taskId"
 					onChange={handleTaskStatus}
+					checked={taskStatus}
 				/>
 			</div>
 			<p className={taskStatus ? styles.doneItem : ""}>{description}</p>

@@ -1,18 +1,29 @@
 import { ClipboardText } from "@phosphor-icons/react";
-import { Task } from "./Task";
+import { Task, type TaskProps } from "./Task";
 import styles from "./TaskList.module.css";
 
-const tasks: number[] = [1, 2, 3];
+const defaultTaskList: Required<TaskProps>[] = [
+	{
+		id: 0,
+		done: false,
+		description:
+			"Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+	},
+	{
+		id: 1,
+		done: true,
+		description:
+			"Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
+	},
+];
 
 export function TaskList() {
+	const [taskList, setTaskList] = useState(defaultTaskList);
+
 	function renderTasksOrEmpty() {
-		if (tasks.length) {
-			return tasks.map((t) => (
-				<Task
-					key={t}
-					description="Integer urna interdum massa libero auctor neque turpis turpis semper.
-				Duis vel sed fames integer."
-				/>
+		if (taskList.length) {
+			return taskList.map((t) => (
+				<Task key={t.id} done={t.done} description={t.description} />
 			));
 		}
 
