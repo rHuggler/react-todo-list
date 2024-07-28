@@ -1,4 +1,5 @@
 import { ClipboardText } from "@phosphor-icons/react";
+import { useState } from "react";
 import { Task, type TaskProps } from "./Task";
 import styles from "./TaskList.module.css";
 
@@ -19,6 +20,11 @@ const defaultTaskList: Required<TaskProps>[] = [
 
 export function TaskList() {
 	const [taskList, setTaskList] = useState(defaultTaskList);
+
+	const doneTasksCount = taskList.reduce(
+		(acc, task) => (task.done ? acc + 1 : acc),
+		0,
+	);
 
 	function renderTasksOrEmpty() {
 		if (taskList.length) {
@@ -41,11 +47,13 @@ export function TaskList() {
 			<header>
 				<div className={styles.totalTasksInfo}>
 					<strong>Created tasks</strong>
-					<span>5</span>
+					<span>{taskList.length}</span>
 				</div>
 				<div className={styles.doneTasksInfo}>
 					<strong>Done</strong>
-					<span>2 of 5</span>
+					<span>
+						{doneTasksCount} of {taskList.length}
+					</span>
 				</div>
 			</header>
 			<div>
