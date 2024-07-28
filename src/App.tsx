@@ -30,7 +30,7 @@ export function App() {
 		<>
 			<Header />
 			<div className={styles.wrapper}>
-				<CreateTask />
+				<CreateTask tasks={taskList} setTaskList={setTaskList} />
 				<TaskList tasks={taskList} setTaskList={setTaskList} />
 			</div>
 		</>
