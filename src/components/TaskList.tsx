@@ -1,35 +1,33 @@
 import { ClipboardText } from "@phosphor-icons/react";
-import { useState } from "react";
-import { Task, type TaskProps } from "./Task";
+import { Task, type TaskType } from "./Task";
 import styles from "./TaskList.module.css";
 
-const defaultTaskList: Required<TaskProps>[] = [
-	{
-		id: 0,
-		done: false,
-		description:
-			"Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-	},
-	{
-		id: 1,
-		done: true,
-		description:
-			"Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-	},
-];
+export interface TaskListProps {
+	tasks: TaskType[];
+	setTaskList: React.Dispatch<React.SetStateAction<Required<TaskType>[]>>;
+}
 
-export function TaskList() {
-	const [taskList, setTaskList] = useState(defaultTaskList);
-
+export function TaskList({ tasks: taskList, setTaskList }: TaskListProps) {
 	const doneTasksCount = taskList.reduce(
 		(acc, task) => (task.done ? acc + 1 : acc),
 		0,
-	);
+	); // TODO: this is not updating when task is done
+
+	function handleDeleteTask(id: number) {
+		const taskListWithoutDeleted = taskList.filter((task) => task.id !== id);
+		setTaskList(taskListWithoutDeleted);
+	}
 
 	function renderTasksOrEmpty() {
 		if (taskList.length) {
 			return taskList.map((t) => (
-				<Task key={t.id} done={t.done} description={t.description} />
+				<Task
+					key={t.id}
+					id={t.id}
+					done={t.done}
+					description={t.description}
+					onDeleteTask={handleDeleteTask}
+				/>
 			));
 		}
 

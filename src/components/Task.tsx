@@ -4,16 +4,27 @@ import { useState } from "react";
 import styles from "./Task.module.css";
 
 export interface TaskProps {
-	id?: number;
+	id: number;
+	done: boolean;
+	description: string;
+	onDeleteTask: (id: number) => void;
+}
+
+export interface TaskType {
+	id: number;
 	done: boolean;
 	description: string;
 }
 
-export function Task({ done, description }: TaskProps) {
+export function Task({ id, done, description, onDeleteTask }: TaskProps) {
 	const [taskStatus, setTaskStatus] = useState(done);
 
 	function handleTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
 		setTaskStatus(e.target.checked);
+	}
+
+	function handleDeleteTask() {
+		onDeleteTask(id);
 	}
 
 	return (
@@ -29,7 +40,8 @@ export function Task({ done, description }: TaskProps) {
 			</div>
 			<p className={taskStatus ? styles.doneItem : ""}>{description}</p>
 			{/* biome-ignore lint/a11y/noNoninteractiveTabindex: <Container for an icon> */}
-			<div className={styles.trashIcon} tabIndex={0}>
+			{/* biome-ignore lint/a11y/useKeyWithClickEvents: <explanation> */}
+			<div className={styles.trashIcon} tabIndex={0} onClick={handleDeleteTask}>
 				<Trash size={16} weight="bold" />
 			</div>
 		</div>
