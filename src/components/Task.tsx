@@ -8,6 +8,7 @@ export interface TaskProps {
 	done: boolean;
 	description: string;
 	onDeleteTask: (id: number) => void;
+	onUpdateTask: (id: number) => void;
 }
 
 export interface TaskType {
@@ -16,11 +17,18 @@ export interface TaskType {
 	description: string;
 }
 
-export function Task({ id, done, description, onDeleteTask }: TaskProps) {
+export function Task({
+	id,
+	done,
+	description,
+	onDeleteTask,
+	onUpdateTask,
+}: TaskProps) {
 	const [taskStatus, setTaskStatus] = useState(done);
 
-	function handleTaskStatus(e: React.ChangeEvent<HTMLInputElement>) {
+	function handleTaskStatusChange(e: React.ChangeEvent<HTMLInputElement>) {
 		setTaskStatus(e.target.checked);
+		onUpdateTask(id);
 	}
 
 	function handleDeleteTask() {
@@ -34,7 +42,7 @@ export function Task({ id, done, description, onDeleteTask }: TaskProps) {
 					type="checkbox"
 					name="status"
 					id="taskId"
-					onChange={handleTaskStatus}
+					onChange={handleTaskStatusChange}
 					checked={taskStatus}
 				/>
 			</div>

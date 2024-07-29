@@ -11,11 +11,21 @@ export function TaskList({ tasks: taskList, setTaskList }: TaskListProps) {
 	const doneTasksCount = taskList.reduce(
 		(acc, task) => (task.done ? acc + 1 : acc),
 		0,
-	); // TODO: this is not updating when task is done
+	);
 
 	function handleDeleteTask(id: number) {
 		const taskListWithoutDeleted = taskList.filter((task) => task.id !== id);
 		setTaskList(taskListWithoutDeleted);
+	}
+
+	function handleUpdateTask(id: number) {
+		const taskListWithUpdate = taskList.map((t) => {
+			if (t.id === id) {
+				t.done = !t.done;
+			}
+			return t;
+		});
+		setTaskList(taskListWithUpdate);
 	}
 
 	function renderTasksOrEmpty() {
@@ -27,6 +37,7 @@ export function TaskList({ tasks: taskList, setTaskList }: TaskListProps) {
 					done={t.done}
 					description={t.description}
 					onDeleteTask={handleDeleteTask}
+					onUpdateTask={handleUpdateTask}
 				/>
 			));
 		}
