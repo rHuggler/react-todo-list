@@ -1,5 +1,7 @@
 # react-todo-list
-> [Preview hosted @ Netlify available here](https://rhuggler-react-todo.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20fb3dc6-7770-49b4-a948-3bcb1467cf68/deploy-status)](https://app.netlify.com/sites/rhuggler-react-todo/deploys)
+
+> [Preview hosted @ Netlify available here](https://react-todo.huggler.dev/)
 
 To-do list made with Vite + React to practice front-end skills
 
