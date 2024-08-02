@@ -1,5 +1,5 @@
 # react-todo-list
-[![Netlify Status](https://api.netlify.com/api/v1/badges/20fb3dc6-7770-49b4-a948-3bcb1467cf68/deploy-status)](https://app.netlify.com/sites/rhuggler-react-todo/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/20fb3dc6-7770-49b4-a948-3bcb1467cf68/deploy-status)](https://app.netlify.com/sites/rhuggler-todo-list/deploys)
 
 > [Preview hosted @ Netlify available here](https://todo-list.huggler.dev/)
 
